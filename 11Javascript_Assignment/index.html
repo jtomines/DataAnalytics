@@ -1,0 +1,129 @@
+<!-- UofT SCS Data Analytics Boot Camp
+  11-Javascript Assignment
+  Filename: index.html
+  Author:   Jose Tomines
+  Date:     2019-04-06
+
+  Instructions:
+
+  Level 1: Automatic Table and Date Search
+  * Create a basic HTML web page or use the [index.html](StarterCode/index.html) file provided (we recommend building your own custom page!).
+  * Using the UFO dataset provided in the form of an array of JavaScript objects, write code that appends a table to your web page and then adds new rows of data for each UFO sighting.
+  * Make sure you have a column for `date/time`, `city`, `state`, `country`, `shape`, and `comment` at the very least.
+  * Use a date form in your HTML document and write JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
+
+  Level 2: Multiple Search Categories (Optional)
+  * Complete all of Level 1 criteria.
+  * Using multiple `input` tags and/or select dropdowns, write JavaScript code so the user can to set multiple filters and search for UFO sightings using the following criteria based on the table columns:
+    1. `date/time`
+    2. `city`
+    3. `state`
+    4. `country`
+    5. `shape`
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>UFO Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">UFO Sightings
+            <img class="nav-ufo" src="static/images/ufo.svg">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="hero text-center">
+      <h1>UFO Sightings</h1>
+      <p>The Truth is Out There</p>
+    </div>
+    <div class="container">
+      <div class="row margin-top-50">
+        <div class="col-md-2">
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <form>
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <select name="Date" id='datedrop'>
+                          <option class="default" value='default'> -- select an option -- </option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a city</label>
+                        <select name="City" id='citydrop'>
+                          <option class="default" value='default'> -- select an option -- </option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a state</label>
+                        <select name="State" id='statedrop'>
+                          <option class="default" value='default'> -- select an option -- </option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a country</label>
+                        <select name="Country" id='countrydrop'>
+                          <option class="default" value='default'> -- select an option -- </option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a shape</label>
+                        <select name="Shape" id='shapedrop'>
+                          <option class="default" value='default'> -- select an option -- </option>
+                        </select>
+                      </li>
+                  </ul>
+                  </div>
+                  <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
+                  <button id="reset-table" type="submit" class="btn btn-default">Reset Table</button>
+                </form>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="col-md-10">
+          <div id="table-area" class="">
+            <table id="ufo-table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="table-head">Date</th>
+                  <th class="table-head">City</th>
+                  <th class="table-head">State</th>
+                  <th class="table-head">Country</th>
+                  <th class="table-head">Shape</th>
+                  <th class="table-head">Duration</th>
+                  <th class="table-head">Comments</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span class="bottom">UFO Sightings</span>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <script src="static/js/data.js"></script>
+  <script src="static/js/app.js"></script>
+</body>
+
+</html>
